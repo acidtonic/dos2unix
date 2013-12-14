@@ -83,7 +83,7 @@ int main (int argc, char **argv)
 
 int dos2u (char *path)
 {
-	printf ("Dos2Unix: Cleaning file %s ...\n", path);
+	printf ("Dos2Unix: Converting file %s ...\n", path);
 	FILE *in, *out;
 	int ch,
 	    rval = FALSE;
@@ -139,12 +139,12 @@ int loop(const char *path, const struct stat *stat, int type)
 {
 	if(type == FTW_F)
 		if (dos2u ((char *)path))
-				fprintf (stderr, "Dos2Unix: Problems cleaning file %s\n", path);
+				fprintf (stderr, "Dos2Unix: Problems converting file %s\n", path);
 	return 0;
 }
 
 int dos2uFolder (char *path)
 {
-	printf ("Dos2Unix: Cleaning directory %s ... \n", path);
+	printf ("Dos2Unix: Converting directory %s ... \n", path);
 	return ftw (path, &loop, OPEN_MAX) == 0;
 }

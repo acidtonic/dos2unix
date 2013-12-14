@@ -83,7 +83,7 @@ int main (int argc, char **argv)
 
 int u2dos (char *path)
 {
-	printf("Unix2Dos: Cleaning file %s ... \n", path);
+	printf("Unix2Dos: Converting file %s ... \n", path);
 	FILE *in, *out;
 	int ch,
 	    rval = FALSE;
@@ -139,12 +139,12 @@ int loop(const char *path, const struct stat *stat, int type)
 {
 	if(type == FTW_F)
 		if (u2dos ((char *)path))
-				fprintf (stderr, "Unix2Dos: Problems cleaning file %s\n", path);
+				fprintf (stderr, "Unix2Dos: Problems converting file %s\n", path);
 	return 0;
 }
 
 int u2dosFolder (char *path)
 {
-	printf("Unix2Dos: Cleaning directory %s ... \n", path);
+	printf("Unix2Dos: Converting directory %s ... \n", path);
 	return ftw (path, &loop, OPEN_MAX) == 0;
 }
